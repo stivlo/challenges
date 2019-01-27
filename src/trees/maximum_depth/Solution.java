@@ -4,7 +4,7 @@ import trees.model.TreeNode;
 
 /**
  * https://leetcode.com/explore/interview/card/top-interview-questions-easy/94/trees/555/
- * 
+ *
  * Definition for a binary tree node.
  * public class TreeNode {
  *     int val;
