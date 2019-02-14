@@ -6,6 +6,7 @@ import java.util.Map;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
+// https://leetcode.com/problems/decode-ways/
 class Solution {
     public int numDecodings(String s) {
         Map<String, Integer> waysMap = new HashMap<>();
