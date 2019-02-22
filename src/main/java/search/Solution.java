@@ -1,8 +1,5 @@
 package search;
 
-import java.util.Random;
-
-
 // https://leetcode.com/explore/interview/card/top-interview-questions-easy/96/sorting-and-searching/774/
 public class Solution {
 

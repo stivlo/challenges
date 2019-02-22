@@ -1,5 +1,7 @@
 package trees.model;
 
+import java.util.StringJoiner;
+
 public class TreeNode {
 
     public int val;
@@ -10,4 +12,12 @@ public class TreeNode {
         val = x;
     }
 
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", TreeNode.class.getSimpleName() + "[", "]")
+                .add("val=" + val)
+                .add("left=" + left)
+                .add("right=" + right)
+                .toString();
+    }
 }
