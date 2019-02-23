@@ -16,5 +16,6 @@ version = "1.2.1"
 dependencies {
 
     compile("org.hamcrest:java-hamcrest:2.0.0.0")
+    compile("com.google.guava:guava:27.0.1-jre")
 
 }
