@@ -13,20 +13,19 @@ public class Solution {
 
     public int maxSpecialProduct(ArrayList<Integer> a) {
         long maxProd = 0;
-        if (a.isEmpty()) return 0;
-        int[] leftSpecialValues = computeLeftSpecialValues(a);
-        int[] rightSpecialValues = computeRightSpecialValues(a);
+        if (a.isEmpty()) return (int) maxProd;
+        int[] left = computeLeftSpecialValues(a);
+        int[] right = computeRightSpecialValues(a);
         for (int i = 0; i < a.size(); i++) {
-            long prod = (((long) leftSpecialValues[i]) * ((long) rightSpecialValues[i]));
-            if (prod > maxProd) maxProd = (int) prod;
+            long prod = (((long) left[i]) * ((long) right[i]));
+            if (prod > maxProd) maxProd = prod;
         }
-        long modulo = 1000000007L;
-        return (int) (maxProd % modulo);
+        return (int) (maxProd % 1000000007);
     }
 
     private int[] computeRightSpecialValues(List<Integer> a) {
         int[] values = new int[a.size()];
-        Deque<Pair> q = new LinkedList<>();
+        Deque<Integer> q = new ArrayDeque<>();
         for (int i = 0; i < a.size(); i++) {
             processElement(values, q, a, i);
         }
@@ -35,55 +34,22 @@ public class Solution {
 
     private int[] computeLeftSpecialValues(List<Integer> a) {
         int[] values = new int[a.size()];
-        Deque<Pair> q = new LinkedList<>();
+        Deque<Integer> q = new ArrayDeque<>();
         for (int i = a.size() - 1; i >= 0; i--) {
             processElement(values, q, a, i);
         }
         return values;
     }
 
-    private void processElement(int[] values, Deque<Pair> q, List<Integer> a, int i) {
-        if (!q.isEmpty() && a.get(i) > q.peekFirst().value) {
-            while (q.peekFirst() != null && q.peekFirst().value < a.get(i)) {
-                Pair curPair = q.pop();
-                values[curPair.index] = i;
+    private void processElement(int[] values, Deque<Integer> q, List<Integer> a, int i) {
+        if (!q.isEmpty() && a.get(i) > a.get(q.peekFirst())) {
+            while (q.peekFirst() != null && a.get(q.peekFirst()) < a.get(i)) {
+                Integer curIdx = q.pop();
+                values[curIdx] = i;
             }
         }
-        q.addFirst(new Pair(i, a.get(i)));
+        q.addFirst(i);
     }
-
-    private class Pair {
-        int index;
-        int value;
-
-        Pair(int index, int value) {
-            this.index = index;
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return new StringJoiner(", ", "{", "}")
-                    .add("index:" + index)
-                    .add("value:" + value)
-                    .toString();
-        }
-    }
-
-//    private long leftSpecialValue(ArrayList<Integer> a, int i) {
-//        for (int j = i - 1; j >= 0; j--) {
-//            if (a.get(j) > a.get(i)) return j;
-//        }
-//        return 0;
-//    }
-//
-//    private long rightSpecialValue(ArrayList<Integer> a, int i) {
-//        for (int j = i+ 1; j < a.size(); j++) {
-//            if (a.get(j) > a.get(i)) return j;
-//        }
-//        return 0;
-//    }
-
 
     public static void main(String[] args) {
         Solution solution = new Solution();
