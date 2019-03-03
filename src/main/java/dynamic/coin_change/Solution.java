@@ -1,4 +1,4 @@
-package dynamic;
+package dynamic.coin_change;
 
 import java.util.HashMap;
 import java.util.Map;
