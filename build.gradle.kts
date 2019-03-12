@@ -17,5 +17,6 @@ dependencies {
 
     compile("org.hamcrest:java-hamcrest:2.0.0.0")
     compile("com.google.guava:guava:27.0.1-jre")
+    compile("org.junit.jupiter:junit-jupiter-engine:5.4.0")
 
 }
