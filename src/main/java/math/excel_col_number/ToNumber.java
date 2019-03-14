@@ -1,7 +1,7 @@
 package math.excel_col_number;
 
 // https://www.interviewbit.com/problems/excel-column-number/
-public class Solution {
+public class ToNumber {
 
     public int titleToNumber(String a) {
         int base = 26;
